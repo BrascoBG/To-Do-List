@@ -4,28 +4,44 @@ class AppToDo extends React.Component {
     constructor(){
         super()
         this.state = {
-            toDo: "",
-            item: "",
-            items: []
+            items: [],
+            current: {
+              text: "",
+              key: ""
+            }
         }
         this.eventHandler = this.eventHandler.bind(this)
-        this.dataItem = this.dataItem.bind(this)
+        this.addItem = this.addItem.bind(this)
+        this.deleteItem = this.deleteItem.bind(this)
     }
 
-    eventHandler(evt){
-        const {name, value} = evt.target
+    eventHandler(e){
         this.setState({
-            [name]: value
+          current:{
+            text: e.target.value,
+            key: Date.now()
+          }
         })
     }
 
-    dataItem(){
-        const item = this.state.item;
-        const items = this.state.items;
-        items.push(item)
+    addItem(e){
+      e.preventDefault();
+      const newItem = this.state.current
+      
+      if(newItem.text !== ""){ 
+      const newItems = [...this.state.items, newItem];
         this.setState({
-            items: items
+          items: newItems,
+          current:{
+            text:"",
+            key:""
+          }
         })
+      }
+    }
+
+    deleteItem(){
+
     }
 
     render(){
@@ -33,15 +49,18 @@ class AppToDo extends React.Component {
             <div>
                 <h1>To Do App</h1>
                 <input type="text"
-                name="item"
+                value={this.state.current.text}
                 onChange={this.eventHandler}
                 />
-                <button onClick={this.dataItem}>Submit</button>
-                {this.state.items.map((item) => {
-                    return(
-                        <p>{item}</p>
-                    )
+                <button onClick={this.addItem}>Submit</button>
+                {this.state.items.map(item => {
+                  return(
+                    <ul>
+                      <li>{item.text}</li>
+                    </ul>
+                  )
                 })}
+                
             </div>
         )
     }
