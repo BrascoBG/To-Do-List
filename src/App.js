@@ -27,7 +27,7 @@ class AppToDo extends React.Component {
     addItem(e){
       e.preventDefault();
       const newItem = this.state.current
-      
+
       if(newItem.text !== ""){ 
       const newItems = [...this.state.items, newItem];
         this.setState({
@@ -40,23 +40,30 @@ class AppToDo extends React.Component {
       }
     }
 
-    deleteItem(){
-
-    }
-
+    deleteItem(key){
+      const items = [...this.state.items]
+      const filteredItems = items.filter(item => item.key !== key);
+        this.setState({
+          items: filteredItems
+        })
+      }
+    
     render(){
         return(
             <div>
                 <h1>To Do App</h1>
+
                 <input type="text"
                 value={this.state.current.text}
                 onChange={this.eventHandler}
                 />
+
                 <button onClick={this.addItem}>Submit</button>
                 {this.state.items.map(item => {
                   return(
-                    <ul>
+                    <ul key={this.state.items.key}>
                       <li>{item.text}</li>
+                      <button onClick={() => this.deleteItem(item.key)}>X</button>
                     </ul>
                   )
                 })}
