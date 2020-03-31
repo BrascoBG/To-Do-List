@@ -1,7 +1,7 @@
 {
   "name": "to-do-list",
   "version": "0.0.2",
-  "private": false,
+  "private": true,
   "homepage": "https://BrascoBG.github.io/To-Do-App-Live",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
