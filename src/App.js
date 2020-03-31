@@ -1,5 +1,6 @@
 import React from "react";
 import ToDo from './componenets/ToDo';
+import Footer from './componenets/Footer'
 
 class AppToDo extends React.Component {
     constructor(){
@@ -51,7 +52,7 @@ class AppToDo extends React.Component {
     
     render(){
         return(
-            <div>
+            <div className="main">
                 <ToDo 
                 eventHandler={this.eventHandler} 
                 addItem={this.addItem}
@@ -59,6 +60,7 @@ class AppToDo extends React.Component {
                 current={this.state.current}
                 items={this.state.items}
                 />
+                <Footer />
             </div>
         )
     }
