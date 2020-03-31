@@ -1,6 +1,6 @@
 # To-Do App with React
 
-![To-Do-App]()
+![To-Do-App](https://github.com/BrascoBG/To-Do-List/blob/master/src/assets/ToDoApp.jpg?raw=true)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
