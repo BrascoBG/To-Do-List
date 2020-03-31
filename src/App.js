@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import ToDo from './componenets/ToDo';
 
 class AppToDo extends React.Component {
     constructor(){
@@ -51,23 +52,13 @@ class AppToDo extends React.Component {
     render(){
         return(
             <div>
-                <h1>To Do App</h1>
-
-                <input type="text"
-                value={this.state.current.text}
-                onChange={this.eventHandler}
+                <ToDo 
+                eventHandler={this.eventHandler} 
+                addItem={this.addItem}
+                deleteItem={this.deleteItem}
+                current={this.state.current}
+                items={this.state.items}
                 />
-
-                <button onClick={this.addItem}>Submit</button>
-                {this.state.items.map(item => {
-                  return(
-                    <ul key={this.state.items.key}>
-                      <li>{item.text}</li>
-                      <button onClick={() => this.deleteItem(item.key)}>X</button>
-                    </ul>
-                  )
-                })}
-                
             </div>
         )
     }
