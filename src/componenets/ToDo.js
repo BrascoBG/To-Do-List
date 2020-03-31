@@ -1,4 +1,5 @@
 import React from 'react';
+import FlipMove from 'react-flip-move';
 
 function ToDo(props){
     return(
@@ -15,8 +16,10 @@ function ToDo(props){
             <button className="main-btn" onClick={props.addItem}>Add</button>
             {props.items.map(item => {
             return(
-                <ul className="list" key={props.items.key}>
-                <li>{item.text}</li>
+                <ul className="list" key={item.key}>
+                    <li>
+                        {item.text}
+                    </li>
                 <button className="primary-btn" onClick={() => props.deleteItem(item.key)}>X</button>
                 </ul>
             )
