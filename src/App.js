@@ -31,12 +31,12 @@ class AppToDo extends React.Component {
       const newItem = this.state.current
 
       if(newItem.text !== ""){ 
-      const newItems = [...this.state.items, newItem];
+      const newItems = this.state.items;
+      newItems.push(newItem)
         this.setState({
           items: newItems,
           current:{
-            text:"",
-            key:""
+            text:""
           }
         })
       }
