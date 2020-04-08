@@ -1,31 +1,19 @@
-import React from 'react';
+import React from "react";
+import ToDoItem from "./ToDoItem";
 
-function ToDo(props){
-    return(
-        <div className="body">
-            <div>
-            <h1>Things To Do</h1>
-
-            <input type="text"
-            placeholder="Type here..."
-            value={props.current.text}
-            onChange={props.eventHandler}
-            />
-
-            <button className="main-btn" onClick={props.addItem}>Add</button>
-            {props.items.map(item => {
-            return(
-                <ul className="list" key={item.key}>
-                    <li>
-                        {item.text}
-                    </li>
-                <button className="primary-btn" onClick={() => props.deleteItem(item.key)}>X</button>
-                </ul>
-            )
-            })}
-            </div>
-        </div>
-    )
+function ToDo(props) {
+  return (
+    <div>
+      {props.todos.map((item) => (
+        <ToDoItem
+          item={item}
+          key={item.id}
+          markComplete={props.markComplete}
+          delToDo={props.delToDo}
+        />
+      ))}
+    </div>
+  );
 }
 
 export default ToDo;

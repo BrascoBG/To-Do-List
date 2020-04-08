@@ -1,69 +1,72 @@
 import React from "react";
-import ToDo from './componenets/ToDo';
-import Footer from './componenets/Footer'
+import ToDo from "./componenets/ToDo";
+import Footer from "./componenets/Footer";
+import AddToDo from "./componenets/AddToDo";
+import { v4 as uuidv4 } from "uuid";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import About from "./componenets/About";
+import Header from "./componenets/Header";
+import "./App.css";
 
 class AppToDo extends React.Component {
-    constructor(){
-        super()
-        this.state = {
-            items: [],
-            current: {
-              text: "",
-              key: ""
-            }
+  constructor() {
+    super();
+    this.state = {
+      todos: [],
+    };
+  }
+
+  markComplete = (id) => {
+    this.setState({
+      todos: this.state.todos.map((todo) => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed;
         }
-        this.eventHandler = this.eventHandler.bind(this)
-        this.addItem = this.addItem.bind(this)
-        this.deleteItem = this.deleteItem.bind(this)
-    }
+        return todo;
+      }),
+    });
+  };
 
-    eventHandler(e){
-        this.setState({
-          current:{
-            text: e.target.value,
-            key: Date.now()
-          }
-        })
-    }
+  delToDo = (id) => {
+    this.setState({
+      todos: [...this.state.todos.filter((todo) => todo.id !== id)],
+    });
+  };
 
-    addItem(e){
-      e.preventDefault();
-      const newItem = this.state.current
+  addToDo = (title) => {
+    const newItem = {
+      id: uuidv4(),
+      title: title,
+      completed: false,
+    };
+    this.setState({ todos: [...this.state.todos, newItem] });
+  };
 
-      if(newItem.text !== ""){ 
-      const newItems = this.state.items;
-      newItems.push(newItem)
-        this.setState({
-          items: newItems,
-          current:{
-            text:""
-          }
-        })
-      }
-    }
-
-    deleteItem(key){
-      const items = [...this.state.items]
-      const filteredItems = items.filter(item => item.key !== key);
-        this.setState({
-          items: filteredItems
-        })
-      }
-    
-    render(){
-        return(
-            <div className="main">
-                <ToDo 
-                eventHandler={this.eventHandler} 
-                addItem={this.addItem}
-                deleteItem={this.deleteItem}
-                current={this.state.current}
-                items={this.state.items}
+  render() {
+    return (
+      <Router>
+        <div className="main">
+          <Header />
+          <Route
+            exact
+            path="/"
+            render={(props) => (
+              <React.Fragment>
+                <AddToDo addToDo={this.addToDo} />
+                <ToDo
+                  todos={this.state.todos}
+                  markComplete={this.markComplete}
+                  delToDo={this.delToDo}
                 />
-                <Footer />
-            </div>
-        )
-    }
+              </React.Fragment>
+            )}
+          />
+          <Route path="/about" component={About} />
+          <Footer />
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default AppToDo;
