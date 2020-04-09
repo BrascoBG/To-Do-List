@@ -3,7 +3,7 @@ import ToDo from "./componenets/ToDo";
 import Footer from "./componenets/Footer";
 import AddToDo from "./componenets/AddToDo";
 import { v4 as uuidv4 } from "uuid";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import About from "./componenets/About";
 import Header from "./componenets/Header";
 import "./App.css";
@@ -34,12 +34,16 @@ class AppToDo extends React.Component {
   };
 
   addToDo = (title) => {
-    const newItem = {
-      id: uuidv4(),
-      title: title,
-      completed: false,
-    };
-    this.setState({ todos: [...this.state.todos, newItem] });
+    if (title !== "") {
+      const newItem = {
+        id: uuidv4(),
+        title: title,
+        completed: false,
+      };
+      this.setState({ todos: [...this.state.todos, newItem] });
+    } else {
+      alert("Please add Item");
+    }
   };
 
   render() {

@@ -106,6 +106,9 @@ p {
 }
 @keyframes pulse {
   0% {
+    transform: scale(1);
+  }
+  50% {
     transform: scale(0.5);
   }
   100% {
@@ -113,7 +116,7 @@ p {
   }
 }
 .footer {
-  position: absolute;
+  position: fixed;
   right: 10px;
   bottom: 10px;
 }
@@ -123,4 +126,57 @@ p {
   background: rgba(255, 255, 255, 0.4);
   padding: 5px;
   border-radius: 5px;
+}
+.hello {
+  width: 80%;
+  text-align: center;
+  margin: 30px auto;
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 7px;
+}
+.me {
+  margin-top: 20px;
+  width: 200px;
+  height: auto;
+  border-radius: 50%;
+}
+.info {
+  margin-top: 20px;
+  width: 350px;
+  background: rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 25px;
+}
+.about-flex {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding-bottom: 50px;
+}
+@media only screen and (max-width: 700px) {
+  .input-txt {
+    width: 60%;
+  }
+  .wrapper {
+    width: 420px;
+  }
+  #plus {
+    cursor: pointer;
+    animation-name: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .input-txt {
+    width: 80%;
+  }
+  .wrapper {
+    width: 350px;
+  }
 }
