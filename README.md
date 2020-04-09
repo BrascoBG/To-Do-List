@@ -2,7 +2,7 @@
 
 This is my ToDo App version 2.0 built with React.js, React Router, Class Components, functional Components, State Componenets, Hooks, CSS3, etc...
 
-![To-Do-App](https://github.com/BrascoBG/To-Do-List/blob/master/src/assets/ToDoApp.jpg?raw=true)
+![To-Do-App](https://github.com/BrascoBG/To-Do-List/blob/master/src/assets/screenshot.jpg?raw=true)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
