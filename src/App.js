@@ -16,11 +16,19 @@ class AppToDo extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const localData = JSON.parse(localStorage.getItem("Todo"));
+    if (localData !== null) {
+      this.setState({ todos: localData });
+    }
+  }
+
   markComplete = (id) => {
     this.setState({
       todos: this.state.todos.map((todo) => {
         if (todo.id === id) {
           todo.completed = !todo.completed;
+          localStorage.setItem("Todo", JSON.stringify(this.state.todos));
         }
         return todo;
       }),
@@ -28,9 +36,17 @@ class AppToDo extends React.Component {
   };
 
   delToDo = (id) => {
-    this.setState({
-      todos: [...this.state.todos.filter((todo) => todo.id !== id)],
-    });
+    this.setState(
+      {
+        todos: [...this.state.todos.filter((todo) => todo.id !== id)],
+      },
+      () => {
+        localStorage.setItem("Todo", JSON.stringify(this.state.todos));
+        if (this.state.todos.length === 0) {
+          localStorage.removeItem("Todo");
+        }
+      }
+    );
   };
 
   addToDo = (title) => {
@@ -40,7 +56,9 @@ class AppToDo extends React.Component {
         title: title,
         completed: false,
       };
-      this.setState({ todos: [...this.state.todos, newItem] });
+      this.setState({ todos: [...this.state.todos, newItem] }, () => {
+        localStorage.setItem("Todo", JSON.stringify(this.state.todos));
+      });
     } else {
       alert("Please add Item");
     }

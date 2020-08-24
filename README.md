@@ -1,6 +1,6 @@
 # To-Do App with React
 
-This is my ToDo App version 2.0 built with React.js, React Router, Class Components, functional Components, State Componenets, Hooks, React-Spring, CSS3, etc...
+This is my ToDo App version 2.0 built with React.js, React Router, Class Components, functional Components, State Components, Hooks, React-Spring, CSS3, localStorage, etc...
 
 ![To-Do-App](https://github.com/BrascoBG/To-Do-List/blob/master/src/assets/screenshot.jpg?raw=true)
 

@@ -26,8 +26,8 @@ function About() {
           <img className="me" src={require("../assets/me.jpg")} alt="its me" />
           <p className="info">
             This is my ToDo App version 2.2 built with React.js, React Router,
-            Class Components, functional Components, State Componenets, Hooks,
-            React-Spring, CSS3, etc...
+            Class Components, functional Components, State Components, Hooks,
+            React-Spring, CSS3, localStorage, etc...
           </p>
         </div>
       </animated.div>
